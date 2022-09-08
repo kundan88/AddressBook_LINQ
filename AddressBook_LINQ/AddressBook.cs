@@ -70,6 +70,27 @@ namespace AddreeBook_LINQ
             }
             return details;
         }
+        public string RemoveContact()
+        {
+            string details = "";
+            AddContact();
+            var contact = dataTable.AsEnumerable().Where(r => r.Field<string>("FirstName") == "Pablo");
+            int count = contact.Count();
+            if (count > 0)
+            {
+                foreach (var row in contact.ToList())
+                {
+                    details += row.Field<string>("FirstName");
+                    row.Delete();
+                    Console.WriteLine("Contact is Removed");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Contact not Found");
+            }
+            return details;
+        }
     }
 }
 
