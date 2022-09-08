@@ -91,6 +91,30 @@ namespace AddreeBook_LINQ
             }
             return details;
         }
+        public void GetContactByUsingCityAndState()
+        {
+            var contacts = dataTable.AsEnumerable().Where(r => r.Field<string>("City") == "Miami" && r.Field<string>("State") == "America");
+            int count = contacts.Count();
+            if (count > 0)
+            {
+                foreach (var contact in contacts)
+                {
+                    Console.WriteLine("First Name:" + contact.Field<string>("FirstName"));
+                    Console.WriteLine("LastName:" + contact.Field<string>("LastName"));
+                    Console.WriteLine("Address:" + contact.Field<string>("Address"));
+                    Console.WriteLine("City:" + contact.Field<string>("City"));
+                    Console.WriteLine("State:" + contact.Field<string>("State"));
+                    Console.WriteLine("ZipCode:" + contact.Field<int>("Zip"));
+                    Console.WriteLine("PhoneNumber:" + contact.Field<long>("PhoneNumber"));
+                    Console.WriteLine("Email:" + contact.Field<string>("Email"));
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Contact not Found.");
+            }
+        }
     }
 }
 
