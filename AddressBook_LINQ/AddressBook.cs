@@ -23,8 +23,8 @@ namespace AddreeBook_LINQ
         }
         public void AddContact()
         {
-            dataTable.Rows.Add("Rita", "Smith", "Street77", "New York", "America", 254632, 8863914598, "ritasmith@gmail.com");
-            dataTable.Rows.Add("Sam", "Kales", "Ohio", "Florida", "America", 789652, 8785214569, "ohiojack@gmail.com");
+            dataTable.Rows.Add("Jaden", "Smith", "Street77", "New York", "America", 254632, 8563214598, "jadensmith@gmail.com");
+            dataTable.Rows.Add("Jack", "Kales", "Ohio", "Florida", "America", 789652, 8745214569, "ohiojack@gmail.com");
             dataTable.Rows.Add("Pablo", "Escobar", "Philadelphia", "Texas", "America", 123652, 8563269547, "pablotexas@gmail.com");
             dataTable.Rows.Add("ElChapo", "Gusman", "Hublo", "Miami", "America", 145236, 7854125632, "miamigusman@gmail.com");
             dataTable.Rows.Add("Brandon", "Tan", "Rebublic", "Washington", "America", 145298, 7452145639, "tanbrandon@gmail.com");
@@ -45,5 +45,31 @@ namespace AddreeBook_LINQ
                 Console.WriteLine();
             }
         }
+        public string EditContact()
+        {
+            string details = "";
+            AddContact();
+            var contacts = dataTable.AsEnumerable().Where(r => r.Field<string>("FirstName") == "Brandon");
+            int count = contacts.Count();
+            if (count > 0)
+            {
+                foreach (var contact in contacts)
+                {
+                    details += contact.Field<string>("FirstName");
+                    contact.SetField("LastName", "Dsouza");
+                    contact.SetField("City", "Mumbai");
+                    contact.SetField("State", "Maharashtra");
+                    contact.SetField("Zip", 400005);
+                }
+                Console.WriteLine("Contact is Updated");
+                DisplayContacts();
+            }
+            else
+            {
+                Console.WriteLine("Contact not Found.");
+            }
+            return details;
+        }
     }
 }
+

@@ -13,6 +13,7 @@ namespace AddressBook_LINQ
             {
                 Console.WriteLine("1: For Add the Contact");
                 Console.WriteLine("2: For Display Contact");
+                Console.WriteLine("3: For Editing Contact");
                 Console.WriteLine("0: For Exit");
                 option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
@@ -26,10 +27,15 @@ namespace AddressBook_LINQ
                     case 2:
                         addressbook.DisplayContacts();
                         break;
+                    case 3:
+                        addressbook.EditContact();
+                        break;
+                    default:
+                        Console.WriteLine("Enter Valid Input");
+                        break;
                 }
             }
             while (option != 0);
         }
     }
 }
-
