@@ -16,7 +16,8 @@ namespace AddressBook_LINQ
                 Console.WriteLine("3: For Editing Contact");
                 Console.WriteLine("4: For Removing Contact");
                 Console.WriteLine("5: For Getting Details Using City And State");
-                Console.WriteLine("5: For Getting Count Details By City Name");
+                Console.WriteLine("6: For Getting Count Details By City Name");
+                Console.WriteLine("7: For Sorting By FirstName");
                 Console.WriteLine("0: For Exit");
                 option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
@@ -41,6 +42,9 @@ namespace AddressBook_LINQ
                         break;
                     case 6:
                         addressbook.CountContactByUsingCity();
+                        break;
+                    case 7:
+                        addressbook.SortContactsByFirstName();
                         break;
                     default:
                         Console.WriteLine("Enter Valid Input");
